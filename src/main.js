@@ -1,11 +1,16 @@
 import Vue from 'vue'
 import App from './App'
-import store from './vuex/store' // import 我们刚刚创建的 store
+import VueRouter from 'vue-router'
+import store from './vuex/store'
+import routerConfig from './router'
+import { sync } from 'vuex-router-sync'
 import 'bootstrap/dist/css/bootstrap.css';
+
+Vue.use(VueRouter);
 require('jquery');
-/* eslint-disable no-new */
-new Vue({
-  el: 'body',
-  store,
-  components: { App }
-});
+var router = new VueRouter();
+routerConfig(router);
+// start app
+sync(store, router);
+App.store = store;
+router.start(App, 'app');

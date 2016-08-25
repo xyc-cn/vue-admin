@@ -1,21 +1,28 @@
 <template>
     <div class="form-group">
         <label>{{desc}}</label>
-        <input type="{{type}}" class="form-control" placeholder="{{placeholder}}" v-model="value">
+        <input type="{{type}}" class="form-control" placeholder="{{placeholder}}" @input="update" v-model="value">
     </div>
 </template>
 <script>
+  import { changeSubmit } from '../vuex/actions'
   export default{
-    props: ['placeholder', 'desc', 'type', 'value'],
+    props: ['placeholder', 'desc', 'type', 'value', 'name'],
     data () {
       return {
-//        value: '',
         msg: 'hello vue'
       }
     },
+    methods: {
+      update: function (e) {
+        this.changeSubmit(this.name, e.target.value);
+      }
+    },
     components: {},
-    ready: function () {
-      console.log(this.placeholder);
+    vuex: {
+      actions: {
+        changeSubmit: changeSubmit
+      }
     }
   }
 </script>

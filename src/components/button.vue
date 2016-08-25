@@ -3,10 +3,10 @@
 </template>
 <script>
   export default{
-    props: ['text', 'callback', 'type'],
+    props: ['text', 'callback', 'type', 'data'],
     data () {
       return {
-        btn: 'btn btn-sm',
+        btn: 'btn',
         buttonType: ''
       }
     },
@@ -18,7 +18,7 @@
     components: {},
     methods: {
       clickButton: function () {
-        this.callback && this.callback.apply();
+        this.callback && this.callback.apply(null, [this.data]);
       }
     }
   }

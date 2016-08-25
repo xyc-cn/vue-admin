@@ -8,12 +8,18 @@
     </tr>
     </thead>
     <tbody>
-      <template v-for="item in list">
+      <template v-for="data in list">
         <tr>
-        <td v-for="td in item">{{td}}</td>
+          <template v-for="td in data">
+            <td v-if="$key == multitype.img.key"><img v-bind:src="td" width="100px" class="img-thumbnail"/></td>
+            <template v-else>
+              <td v-if="$key == multitype.imgList.key"><img v-for="url in td" v-bind:src="url" width="100px" class="img-thumbnail"/></td>
+              <td v-else>{{td}}</td>
+            </template>
+          </template>
           <td v-if="operation">
           <template v-for="item in operation">
-            <v_button :text="item.text" :type="item.type"></v_button>
+            <v_button :text="item.text" :type="item.type" :callback="item.callback" :data="data"></v_button>
           </template>
           </td>
         </tr>
@@ -24,10 +30,10 @@
 <script>
   import button from './button'
   export default{
-    props: ['th', 'list', 'operation'],
+    props: ['th', 'list', 'operation', 'multitype'],
     data () {
       return {
-        type: 'danger',
+        mode: 'danger',
         callback: function () {
           console.log(2222)
         }
@@ -38,3 +44,8 @@
     }
   }
 </script>
+<style>
+.img-thumbnail{
+  margin-right:5px;
+}
+</style>

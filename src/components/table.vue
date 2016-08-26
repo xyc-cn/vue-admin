@@ -33,10 +33,6 @@
     props: ['th', 'list', 'operation', 'multitype'],
     data () {
       return {
-        mode: 'danger',
-        callback: function () {
-          console.log(2222)
-        }
       }
     },
     components: {

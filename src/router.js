@@ -6,7 +6,10 @@ export default (router) => {
     '/list': {
       component: (resolve) => require(['./view/List.vue'], resolve)
     },
-    '/detail': {
+    '/list/:page': {
+      component: (resolve) => require(['./view/List.vue'], resolve)
+    },
+    '/detail/:id': {
       component: (resolve) => require(['./view/Detail.vue'], resolve)
     }
   });

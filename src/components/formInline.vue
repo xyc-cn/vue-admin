@@ -4,8 +4,7 @@
       <v_input :placeholder="item.placeholder" :type="item.type" :name="item.name" :desc="item.desc" v-if="(item.componentType=='input')"></v_input>
       <v_check_box :name="item.name" :label="item.label" :value="item.value" v-if="(item.componentType=='checkBox')"></v_check_box>
       <v_select :name="item.name" :label="item.label" :options="item.options" :value="item.value" v-if="(item.componentType=='select')"></v_select>
-      <v_button :text="item.text" :type="item.type" v-if="(item.componentType=='button')"></v_button>
-
+      <v_button :text="item.text" :callback="item.callback" :type="item.type" v-if="(item.componentType=='button')"></v_button>
     </template>
   </div>
 </template>

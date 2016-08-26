@@ -9,8 +9,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 Vue.use(VueRouter);
 require('jquery');
 var router = new VueRouter();
+/* eslint-disable */
 routerConfig(router);
 // start app
-sync(store, router);
 App.store = store;
+sync(store, router);
 router.start(App, 'app');

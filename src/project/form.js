@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2016/8/25.
  */
+import buttonHandle from './handle/buttonHandle'
 export default{
   components: [[
     {
@@ -26,7 +27,8 @@ export default{
     {
       componentType: 'button',
       text: '过滤',
-      type: 'primary'
+      type: 'primary',
+      callback: buttonHandle.search
     }
   ], [
     {
@@ -39,7 +41,8 @@ export default{
     {
       componentType: 'button',
       text: '搜索',
-      type: 'primary'
+      type: 'primary',
+      callback: buttonHandle.search
     }
   ]]
 }

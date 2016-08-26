@@ -7,14 +7,29 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  // 表单请求参数
-  submit: {}
+  // 表单数据
+  submit: {},
+  // 列表展示元数据
+  list: [],
+  params: {}
 };
 
 const mutations = {
   CHANGESUBMIT (state, key, value) {
     state.submit[key] = value;
-    console.log(JSON.stringify(state.submit));
+  },
+  FETCHELISTDATA (state, list) {
+    console.log(222);
+    state.list = list;
+  },
+  SEARCH (state, value) {
+    state.params = {};
+    state.params.search = state.submit.search;
+    console.log(state.params);
+  },
+  FILTER (state, value) {
+    state.params = value;
+    state.params.search = null;
   }
 };
 

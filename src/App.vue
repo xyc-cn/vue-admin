@@ -8,7 +8,6 @@
     components: {
     },
     ready () {
-
     }
   }
 </script>

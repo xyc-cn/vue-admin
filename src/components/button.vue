@@ -10,6 +10,10 @@
         buttonType: ''
       }
     },
+    vuex: {
+      actions: {
+      }
+    },
     computed: {
       buttonType: function () {
         return 'btn-' + this.type
@@ -18,7 +22,7 @@
     components: {},
     methods: {
       clickButton: function () {
-        this.callback && this.callback.apply(null, [this.data]);
+        this.callback && this.callback.apply(null, [this.data, this]);
       }
     }
   }

@@ -9,6 +9,9 @@ export default (router) => {
     '/list/:page': {
       component: (resolve) => require(['./view/List.vue'], resolve)
     },
+    '/editorForm': {
+      component: (resolve) => require(['./view/EditorForm.vue'], resolve)
+    },
     '/detail/:id': {
       component: (resolve) => require(['./view/Detail.vue'], resolve)
     }

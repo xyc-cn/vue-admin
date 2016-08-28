@@ -18,10 +18,10 @@
     components: {},
     methods: {
       setPaginator: function () {
-        console.log(this.url);
+        var currentPage = this.$route.params.page ? this.$route.params.page : this.current ? this.current : 1;
         var url = this.url;
         var options = {
-          currentPage: this.current,
+          currentPage: currentPage,
           totalPages: this.total,
           pageUrl: function (type, clickedPage, current) {
             /* eslint-disable */
@@ -44,10 +44,10 @@
       }
     },
     watch: {
-      total: "setPaginator"
+      total: "setPaginator",
+      current: "setPaginator"
     },
     ready: function () {
-      this.current = this.$route.params.page ? this.$route.params.page : 1;
       this.setPaginator();
     }
   }

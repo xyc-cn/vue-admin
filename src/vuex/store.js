@@ -11,7 +11,8 @@ const state = {
   submit: {},
   // 列表展示元数据
   list: [],
-  params: {}
+  params: {},
+  currentPage: 1
 };
 
 const mutations = {
@@ -19,17 +20,18 @@ const mutations = {
     state.submit[key] = value;
   },
   FETCHELISTDATA (state, list) {
-    console.log(222);
     state.list = list;
   },
   SEARCH (state, value) {
-    state.params = {};
-    state.params.search = state.submit.search;
-    console.log(state.params);
+    state.page = 1;
+    var params = {search: state.submit.search}
+    state.params = params;
   },
   FILTER (state, value) {
-    state.params = value;
-    state.params.search = null;
+    var params = JSON.parse(JSON.stringify(state.submit));
+    delete params.search;
+    params.page = 1;
+    state.params = params;
   }
 };
 

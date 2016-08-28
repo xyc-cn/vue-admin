@@ -28,7 +28,7 @@ export default{
       componentType: 'button',
       text: '过滤',
       type: 'primary',
-      callback: buttonHandle.search
+      callback: buttonHandle.filter
     }
   ], [
     {
@@ -43,6 +43,12 @@ export default{
       text: '搜索',
       type: 'primary',
       callback: buttonHandle.search
+    },
+    {
+      componentType: 'button',
+      text: '复位',
+      type: 'success',
+      callback: buttonHandle.refresh
     }
   ]]
 }

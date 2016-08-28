@@ -5,6 +5,7 @@ import store from './vuex/store'
 import routerConfig from './router'
 import { sync } from 'vuex-router-sync'
 import 'bootstrap/dist/css/bootstrap.css';
+import './assets/css/main.css';
 
 Vue.use(VueRouter);
 require('jquery');

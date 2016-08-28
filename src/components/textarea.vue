@@ -1,22 +1,15 @@
 <template>
-    <div>
-        <header-component/>
-        <div>this is template body</div>
-        <other-component/>
-    </div>
+  <div class="form-group">
+    <textarea class="form-control" rows="3"></textarea>
+  </div>
 </template>
 <script>
-    import HeaderComponent from './components/header.vue'
-    import OtherComponent from './components/other.vue'
-    export default{
-        data(){
-            return{
-                msg:'hello vue'
-            }
-        },
-        components:{
-            'other-component':OtherComponent,
-            HeaderComponent,
-        }
-    }
+  export default{
+    data () {
+      return {
+        msg: 'hello vue'
+      }
+    },
+    components: {}
+  }
 </script>

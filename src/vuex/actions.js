@@ -16,3 +16,6 @@ export const fetchListData = function ({ dispatch, state }, page) {
 export const search = function ({ dispatch }) {
   dispatch('SEARCH');
 };
+export const filter = function ({ dispatch }) {
+  dispatch('FILTER');
+};

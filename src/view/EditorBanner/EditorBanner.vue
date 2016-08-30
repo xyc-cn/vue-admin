@@ -9,10 +9,10 @@
     </div>
 </template>
 <script>
-  import Nav from './../components/Nav'
-  import textarea from './../components/textarea'
-  import input from './../components/Input'
-  import Message from './../components/Message'
+  import Nav from './../../components/Nav'
+  import textarea from './../../components/textarea'
+  import input from './../../components/Input'
+  import Message from './../../components/Message'
   export default{
     data () {
       return {

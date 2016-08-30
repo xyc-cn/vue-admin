@@ -3,49 +3,14 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import $ from 'jquery'
+import ListConfig from './List/config'
+import DetailConfig from './Detail/config'
 Vue.use(Vuex);
 
-const state = {
-  // 表单数据
-  submit: {},
-  // 列表展示元数据
-  list: [],
-  // 提交的参数
-  params: {},
-  // 分页页码
-  currentPage: 1,
-  total: 0
-};
+const state = $.extend({}, ListConfig.state, DetailConfig.state);
 
-const mutations = {
-  CHANGESUBMIT (state, key, value) {
-    state.submit[key] = value;
-  },
-  FETCHELISTDATA (state, list) {
-    state.list = list;
-  },
-  SEARCH (state) {
-    state.page = 1;
-    var params = {search: state.submit.search};
-    state.params = params;
-  },
-  FILTER (state) {
-    var params = JSON.parse(JSON.stringify(state.submit));
-    delete params.search;
-    params.page = 1;
-    state.params = params;
-  },
-  CHANGETOTAL (state, value) {
-    state.total = value;
-  },
-  SETCURRENTPAGE (state, value) {
-    state.currentPage = value;
-  },
-  REFRESH (state) {
-    state.params = {};
-  }
-};
+const mutations = $.extend({}, ListConfig.motations, DetailConfig.motations);
 
 export default new Vuex.Store({
   state,

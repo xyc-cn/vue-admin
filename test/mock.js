@@ -1,4 +1,3 @@
-
 module.exports = {
   list: [{
     name: '小弟fgfg',
@@ -140,4 +139,4 @@ module.exports = {
       status: 0
     }
   ]
-}
+};

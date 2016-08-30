@@ -1,29 +1,22 @@
 <template>
   <div class="checkbox">
     <label>
-      <input type="checkbox" v-model="value" name="{{name}}" @change="update"> {{label}}
+      <input type="checkbox" v-model="value" name="{{name}}" @change="updateData"> {{label}}
     </label>
   </div>
 </template>
 <script>
-  import { changeSubmit } from '../vuex/actions'
   export default{
-    props: ['value', 'name', 'label'],
+    props: ['value', 'name', 'label', 'callback'],
     data () {
       return {
-        msg: 'hello vue'
       }
     },
     methods: {
-      update: function (e) {
-        this.changeSubmit(this.name, e.target.checked);
+      updateData: function (e) {
+        this.callback && this.callback.apply(null, [this.name, this.value, this]);
       }
     },
-    components: {},
-    vuex: {
-      actions: {
-        changeSubmit: changeSubmit
-      }
-    }
+    components: {}
   }
 </script>

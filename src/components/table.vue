@@ -13,11 +13,8 @@
           <td>{{index+1}}</td>
           <template v-for="td in data">
             <template v-if="key.indexOf($key)>=0">
-              <td v-if="$key == multitype.img.key"><img v-bind:src="td" width="100px" class="img-thumbnail"/></td>
-              <template v-else>
-                <td v-if="$key == multitype.imgList.key"><img v-for="url in td" v-bind:src="url" width="100px" class="img-thumbnail"/></td>
-                <td v-else>{{render[$key] ? render[$key](td) :td}}</td>
-              </template>
+                <td v-if="render[$key]">{{{render[$key] ? render[$key](td) :td}}}</td>
+                <td v-else>{{td}}</td>
             </template>
           </template>
           <td v-if="operation">
@@ -34,9 +31,11 @@
   import button from './button'
   export default{
     beforeCompile: function () {
-      this.th.unshift('序号');
+      if (this.th.indexOf('序号') < 0) {
+        this.th.unshift('序号');
+      }
     },
-    props: ['th', 'list', 'operation', 'multitype', 'key', 'render'],
+    props: ['th', 'list', 'operation', 'key', 'render'],
     data () {
       return {
       }

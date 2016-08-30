@@ -10,10 +10,10 @@ export default (router) => {
       component: (resolve) => require(['./view/List/List.vue'], resolve)
     },
     '/editorForm': {
-      component: (resolve) => require(['./view/EditorForm.vue'], resolve)
+      component: (resolve) => require(['./view/EditorBanner/EditorBanner.vue'], resolve)
     },
     '/detail/:id': {
-      component: (resolve) => require(['./view/Detail.vue'], resolve)
+      component: (resolve) => require(['./view/Detail/Detail.vue'], resolve)
     },
     '/test': {
       component: (resolve) => require(['./view/List/List.vue'], resolve)

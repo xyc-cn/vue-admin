@@ -9,9 +9,8 @@
   </div>
 </template>
 <script>
-  import { changeSubmit } from '../vuex/actions'
   export default{
-    props: ['options', 'value', 'label', 'name', 'value_type'],
+    props: ['options', 'value', 'label', 'name', 'value_type', 'callback'],
     data () {
       return {
         msg: 'hello vue'
@@ -23,14 +22,9 @@
         if (this.value_type === 'Number') {
           value = Number(value);
         }
-        this.changeSubmit(this.name, value);
+        this.callback && this.callback.apply(null, [this.name, this.value, this]);
       }
     },
-    components: {},
-    vuex: {
-      actions: {
-        changeSubmit: changeSubmit
-      }
-    }
+    components: {}
   }
 </script>

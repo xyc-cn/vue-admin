@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "server": "cd build&&supervisor proxyServer.js",
+    "server": "cd server&&supervisor proxyServer.js",
     "build": "node build/build.js",
     "test": "",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"

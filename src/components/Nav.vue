@@ -1,12 +1,14 @@
 <template>
   <nav class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-      <li>
-        <a href="#">审批系统</a>
+      <li v-for="item in left">
+        <a href="{{item.url}}">{{item.name}}</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">登录</a></li>
+      <li v-for="item in right">
+        <a href="{{item.url}}">{{item.name}}</a>
+      </li>
     </ul>
   </nav>
 </template>
@@ -14,7 +16,8 @@
   export default{
     data () {
       return {
-        msg: 'hello vue'
+        left: [{name: '审批系统', url: '/#!/list'}],
+        right: [{name: '登录', url: '/#!/login'}]
       }
     },
     components: {},

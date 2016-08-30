@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { search, filter, fetchListData } from '../../vuex/actions'
+import { search, filter, fetchListData, refresh } from '../../vuex/actions'
 import Vue from 'vue'
 import Message from '../../components/Message'
 const MessageComponent = Vue.extend(Message);
@@ -19,14 +19,12 @@ export default{
     })
   },
   pass: function (data, vm) {
-    $.post('./api/pass', function (res) {
-      console.log(res);
+    $.post('./api/pass', data, function (res) {
       fetchListData(vm.$store)
     })
   },
   ban: function (data,vm) {
-    $.post('./api/ban', function (res) {
-      console.log(res);
+    $.post('./api/ban', data, function (res) {
       fetchListData(vm.$store)
     });
   },
@@ -42,6 +40,7 @@ export default{
     vm.$router.go('/list');
   },
   refresh: function (data, vm) {
+    refresh(vm.$store);
     vm.$router.go('/list');
   }
 }

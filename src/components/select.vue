@@ -11,7 +11,7 @@
 <script>
   import { changeSubmit } from '../vuex/actions'
   export default{
-    props: ['options', 'value', 'label', 'name'],
+    props: ['options', 'value', 'label', 'name', 'value_type'],
     data () {
       return {
         msg: 'hello vue'
@@ -19,7 +19,11 @@
     },
     methods: {
       update: function (e) {
-        this.changeSubmit(this.name, e.target.value);
+        var value = e.target.value;
+        if (this.value_type === 'Number') {
+          value = Number(value);
+        }
+        this.changeSubmit(this.name, value);
       }
     },
     components: {},

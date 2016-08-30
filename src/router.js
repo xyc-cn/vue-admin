@@ -4,16 +4,19 @@
 export default (router) => {
   router.map({
     '/list': {
-      component: (resolve) => require(['./view/List.vue'], resolve)
+      component: (resolve) => require(['./view/List/List.vue'], resolve)
     },
     '/list/:page': {
-      component: (resolve) => require(['./view/List.vue'], resolve)
+      component: (resolve) => require(['./view/List/List.vue'], resolve)
     },
     '/editorForm': {
       component: (resolve) => require(['./view/EditorForm.vue'], resolve)
     },
     '/detail/:id': {
       component: (resolve) => require(['./view/Detail.vue'], resolve)
+    },
+    '/test': {
+      component: (resolve) => require(['./view/List/List.vue'], resolve)
     }
   });
   router.redirect({

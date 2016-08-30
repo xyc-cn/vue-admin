@@ -22,7 +22,7 @@
         var url = this.url;
         var options = {
           currentPage: currentPage,
-          totalPages: this.total,
+          totalPages: this.total ? this.total : 1,
           pageUrl: function (type, clickedPage, current) {
             /* eslint-disable */
             switch (type) {
@@ -48,7 +48,9 @@
       current: "setPaginator"
     },
     ready: function () {
-      this.setPaginator();
+      if(this.total && this.total > 0){
+        this.setPaginator();
+      }
     }
   }
 </script>

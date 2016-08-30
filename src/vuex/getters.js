@@ -10,3 +10,6 @@ export function getListData (state) {
 export function getCurrentPage (state) {
   return state.currentPage
 }
+export function getTotal (state) {
+  return state.total
+}

@@ -4,15 +4,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const state = {
   // 表单数据
   submit: {},
   // 列表展示元数据
   list: [],
+  // 提交的参数
   params: {},
-  currentPage: 1
+  // 分页页码
+  currentPage: 1,
+  total: 0
 };
 
 const mutations = {
@@ -22,16 +25,25 @@ const mutations = {
   FETCHELISTDATA (state, list) {
     state.list = list;
   },
-  SEARCH (state, value) {
+  SEARCH (state) {
     state.page = 1;
-    var params = {search: state.submit.search}
+    var params = {search: state.submit.search};
     state.params = params;
   },
-  FILTER (state, value) {
+  FILTER (state) {
     var params = JSON.parse(JSON.stringify(state.submit));
     delete params.search;
     params.page = 1;
     state.params = params;
+  },
+  CHANGETOTAL (state, value) {
+    state.total = value;
+  },
+  SETCURRENTPAGE (state, value) {
+    state.currentPage = value;
+  },
+  REFRESH (state) {
+    state.params = {};
   }
 };
 

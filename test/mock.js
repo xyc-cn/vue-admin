@@ -138,5 +138,27 @@ module.exports = {
       home: '广东',
       status: 0
     }
+  ],
+  bannerList:[
+    {
+      title: '测试banner',
+      img: 'http://imgcache.gtimg.cn/club/mobile/profile/comic_center/public/0784c9cf86434293ca5ab8ae8799a16b.jpg',
+      url: 'http://www.qq.com'
+    },
+    {
+      title: '我打死的',
+      img: 'http://imgcache.gtimg.cn/club/mobile/profile/comic_center/public/ed997f16f62d1aab3c9758c78b694adb.png',
+      url: 'http://www.qqwewe.com'
+    },
+    {
+      title: '速度速度稳定',
+      img: 'http://imgcache.gtimg.cn/club/mobile/profile/comic_center/public/general_c5aee6f2795c7a557a3379c6ef1ed6f5.jpg',
+      url: 'http://www.dfdfdfqq.com'
+    },
+    {
+      title: '速度速定',
+      img: 'http://imgcache.gtimg.cn/club/mobile/profile/comic_center/public/general_ed997f16f62d1aab3c9758c78b694adb.png',
+      url: 'http://www.dfdfdfqq.com'
+    }
   ]
 };

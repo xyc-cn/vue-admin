@@ -4,7 +4,7 @@
       <div class="panel-body">
         <v_form_inline v-for="item in form":components="item"></v_form_inline>
         <v_table :th="table.th" :list="list" :operation="table.operation"  :key="table.key" :render="table.render"></v_table>
-        <v_pagintion :url="'#!/list/'" :total="total" :current="current"></v_pagintion>
+        <v_pagintion :url="url" :total="total" :current="current"></v_pagintion>
       </div>
     </div>
   </div>
@@ -24,6 +24,7 @@
     data () {
       return {
         list: [],
+        url: config.url,
         table: config.table,
         form: config.form
       }

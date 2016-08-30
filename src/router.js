@@ -15,6 +15,9 @@ export default (router) => {
     '/detail/:id': {
       component: (resolve) => require(['./view/Detail/Detail.vue'], resolve)
     },
+    '/bannerList': {
+      component: (resolve) => require(['./view/BannerList/BannerList.vue'], resolve)
+    },
     '/test': {
       component: (resolve) => require(['./view/List/List.vue'], resolve)
     }

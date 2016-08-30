@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2016/8/25.
+ * Created by easonxie on 2016/8/25.
  */
 import Vue from 'vue'
 import Vuex from 'vuex'

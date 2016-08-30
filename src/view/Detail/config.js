@@ -10,7 +10,7 @@ export default{
       return '<img src="' + value + '">';
     },
     imgList: function (value) {
-      var tpl = '';
+      var tpl = '<p>头像</p>';
       value.forEach(function (v) {
         var dom = '<img class="img-thumbnail" width="100px" src="' + v + '">';
         tpl = tpl + dom;

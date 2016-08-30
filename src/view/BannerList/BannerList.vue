@@ -23,8 +23,6 @@
     },
     route: {
       data: function (transition) {
-        var id = this.$route.params.id;
-        this.fetchDetailData(id);
         transition.next({})
       }
     },

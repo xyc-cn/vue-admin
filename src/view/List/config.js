@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2016/8/29.
+ * Created by easonxie on 2016/8/29.
  */
 import handle from './handle'
 export default{
@@ -86,5 +86,6 @@ export default{
       type: 'primary',
       callback: handle.filter
     }
-  ]]
+  ]],
+  url: '#!/list/'
 }

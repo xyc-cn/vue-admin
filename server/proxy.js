@@ -21,7 +21,7 @@ module.exports = function (app) {
     },
     decorateRequest: function(proxyReq, originalReq) {
       // 替换参数名称
-      proxyReq.bodyContent = proxyReq.bodyContent.replace(/search/, 'searchStr');
+    //  proxyReq.bodyContent = proxyReq.bodyContent.replace(/search/, 'searchStr');
       return proxyReq;
     }
   }));

@@ -11,10 +11,8 @@
 </template>
 
 <script>
-  import Input from '../../components/Input'
   import formInline from '../../components/formInline'
   import table from '../../components/table'
-  import Button from '../../components/button'
   import Pagintion from '../../components/Pagintion'
   import config from './config'
   import { fetchListData, setCurrentPage } from '../../vuex/List/actions'
@@ -29,10 +27,8 @@
       }
     },
     components: {
-      v_input: Input,
       v_form_inline: formInline,
       v_table: table,
-      v_button: Button,
       v_pagintion: Pagintion
     },
     watch: {

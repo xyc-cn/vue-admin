@@ -6,7 +6,7 @@
 </template>
 <script>
   export default{
-    props: ['placeholder', 'desc', 'type', 'value', 'name', 'callback'],
+    props: ['placeholder', 'desc', 'type', 'value', 'name', 'callback', 'upload'],
     data () {
       return {
       }
@@ -14,6 +14,12 @@
     methods: {
       update: function (e) {
         this.callback && this.callback.apply(null, [this.name, this.value, this]);
+        if (this.type === 'file') {
+          this.handleFile();
+        }
+      },
+      handleFile: function () {
+        this.upload && this.upload.apply(null, [this.name, this.$el.lastElementChild, this])
       }
     },
     components: {}

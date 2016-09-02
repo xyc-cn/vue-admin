@@ -108,4 +108,18 @@ module.exports = function (app) {
     };
     res.json(data)
   });
+
+  app.post('/api/addBanner', function (req, res) {
+    var page = req.body.page ? req.body.page : 1;
+    delete req.body.page;
+    var list = db.get('banner').drop((page - 1) * 4).take(4).value();
+    var total = Math.ceil(db.get('banner').size().value() / 4);
+    var data = {
+      result: 0,
+      message: 'error message',
+      list: list,
+      total: total
+    };
+    res.json(data)
+  });
 };

@@ -19,7 +19,6 @@
   import config from './config'
   import { fetchListData, setCurrentPage } from '../../vuex/List/actions'
   import { getListData, getParams, getCurrentPage, getTotal } from '../../vuex/List/getters'
-
   export default {
     data () {
       return {
@@ -44,13 +43,10 @@
         this.fetchListData(1);
       }
     },
-    beforeCompile: function () {
-      var page = this.$route.params.page ? this.$route.params.page : 1;
-      this.setCurrentPage(page);
-    },
     route: {
       data: function (transition) {
-        var page = this.$route.params.page ? this.$route.params.page : 1; // 改变currentPage触发数据刷新
+        var page = this.$route.params.page ? this.$route.params.page : 1;
+        this.setCurrentPage(page);
         this.fetchListData(page);
         transition.next({})
       }

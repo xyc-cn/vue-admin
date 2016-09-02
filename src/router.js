@@ -9,7 +9,7 @@ export default (router) => {
     '/list/:page': {
       component: (resolve) => require(['./view/List/List.vue'], resolve)
     },
-    '/editorForm': {
+    '/editorBanner': {
       component: (resolve) => require(['./view/EditorBanner/EditorBanner.vue'], resolve)
     },
     '/detail/:id': {

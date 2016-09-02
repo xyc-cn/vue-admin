@@ -16,7 +16,6 @@
       updateData: function (e) {
         this.callback && this.callback.apply(null, [this.name, this.value, this]);
       }
-    },
-    components: {}
+    }
   }
 </script>

@@ -2,48 +2,39 @@
   <div class="panel_main">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div v-for="item in data" class="detail_wrap">
-          <template v-if="config.render&&config.render[$key]">
-            {{{config.render[$key](item)}}}
-          </template>
-        </div>
+        <template v-for="item in bannerList">
+          <h2>标题: {{item.title}}</h2>
+          <img v-bind:src="item.bgImg" class="img-thumbnail" width="100px">
+          <h2>链接: {{item.title}}</h2>
+        </template>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import { fetchDetailData } from '../../vuex/Detail/actions'
-  import { getDetailData } from '../../vuex/Detail/getters'
   import config from './config'
+  import handle from './handle'
+
   export default{
     data () {
       return {
-        data: {}
+        config: config,
+        bannerList: []
       }
     },
     route: {
       data: function (transition) {
+        handle.fetchBannerListData(1, this);
         transition.next({})
       }
     },
-    components: {},
     watch: {
-      detailData: function () {
-        this.data = this.detailData;
+      bannerList: function () {
+        console.log(333);
       }
-    },
-    vuex: {
-      getters: {
-        detailData: getDetailData
-      },
-      actions: {
-        fetchDetailData: fetchDetailData
-      }
-    },
-    beforeCompile: function () {
-      this.config = config;
     },
     ready: function () {
+      console.log(this.bannerList);
     }
   }
 </script>

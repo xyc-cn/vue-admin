@@ -12,40 +12,21 @@
   </div>
 </template>
 <script>
-  import { fetchDetailData } from '../../vuex/Detail/actions'
-  import { getDetailData } from '../../vuex/Detail/getters'
   import config from './config'
+  import handle from './handle'
   export default{
     data () {
       return {
+        config: config,
         data: {}
       }
     },
     route: {
       data: function (transition) {
         var id = this.$route.params.id;
-        this.fetchDetailData(id);
+        handle.fetchDetailData(id, this);
         transition.next({})
       }
-    },
-    components: {},
-    watch: {
-      detailData: function () {
-        this.data = this.detailData;
-      }
-    },
-    vuex: {
-      getters: {
-        detailData: getDetailData
-      },
-      actions: {
-        fetchDetailData: fetchDetailData
-      }
-    },
-    beforeCompile: function () {
-      this.config = config;
-    },
-    ready: function () {
     }
   }
 </script>

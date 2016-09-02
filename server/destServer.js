@@ -4,34 +4,48 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var formidable = require('formidable');
+var fs =require('fs');
 var app = express();
+var mock = require('./mock');
+
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false,limit: '5mb'}));
 // parse application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '5mb'}));
 // 设置静态目录
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-app.post('/api/list', function (req, res) {
-  console.log(req.body);
-  var list =[{
-    name: '我是代理过来的数据',
-    sex: '男',
-    age: '12',
-    birthday: '2016-12-10',
-    hobby: '打球',
-    img: 'http://p.qpic.cn/comic/PiajxSqBRaEIsCl4tgeGeD9V9ViaE1VHrfTxuPwu7ZrFgbvfz6ELyJQQ/400/',
-    height: '172cm',
-    home: '山东',
-    status: 0
-  }];
-  var data = {
-    result: 0,
-    message: 'error message',
-    list: list,
-    total: 1
-  };
-  res.json(data)
+mock(app);
+
+app.post('/api/upload', function(req, res) {
+  var imgPath;
+  var form = new formidable.IncomingForm();
+  form.uploadDir = "./static";
+  form.keepExtensions = true;
+  form.on('file', function(name, file) {
+    var match = file.path.match(/(upload\w*).(\w*)/);
+    var fileName = match[1]+'.'+match[2];
+    fs.renameSync(file.path, "../dist/static/img/" + fileName);
+    imgPath = 'http://localhost:3001/' + 'static/img/' + fileName;
+  });
+  form.on('end',function(name, file){
+    var data = {
+      result: 0,
+      message: 'error message',
+      data: {url: imgPath, id:'5555'}
+    };
+    res.json(data)
+  });
+  //出错
+  form.on('error',function(err){
+    res.end(err);
+  });
+  //执行文件上传任务
+  form.parse(req,function(){
+
+  });
+
 });
 
 var server = app.listen(3001, function () {

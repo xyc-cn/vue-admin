@@ -11,15 +11,12 @@
 </template>
 
 <script>
-  import Input from '../../components/Input'
   import formInline from '../../components/formInline'
   import table from '../../components/table'
-  import Button from '../../components/button'
   import Pagintion from '../../components/Pagintion'
   import config from './config'
   import { fetchListData, setCurrentPage } from '../../vuex/List/actions'
   import { getListData, getParams, getCurrentPage, getTotal } from '../../vuex/List/getters'
-
   export default {
     data () {
       return {
@@ -30,10 +27,8 @@
       }
     },
     components: {
-      v_input: Input,
       v_form_inline: formInline,
       v_table: table,
-      v_button: Button,
       v_pagintion: Pagintion
     },
     watch: {
@@ -44,13 +39,10 @@
         this.fetchListData(1);
       }
     },
-    beforeCompile: function () {
-      var page = this.$route.params.page ? this.$route.params.page : 1;
-      this.setCurrentPage(page);
-    },
     route: {
       data: function (transition) {
-        var page = this.$route.params.page ? this.$route.params.page : 1; // 改变currentPage触发数据刷新
+        var page = this.$route.params.page ? this.$route.params.page : 1;
+        this.setCurrentPage(page);
         this.fetchListData(page);
         transition.next({})
       }

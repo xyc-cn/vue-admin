@@ -19,6 +19,9 @@
     methods: {
       setPaginator: function () {
         var currentPage = this.$route.params.page ? this.$route.params.page : this.current ? this.current : 1;
+        if (currentPage > this.total) {
+          return
+        }
         var url = this.url;
         var options = {
           currentPage: currentPage,
@@ -44,8 +47,7 @@
       }
     },
     watch: {
-      total: "setPaginator",
-      current: "setPaginator"
+      total: "setPaginator"
     },
     ready: function () {
       if(this.total && this.total > 0){

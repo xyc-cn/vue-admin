@@ -120,4 +120,40 @@ module.exports = function (app) {
     };
     res.json(data)
   });
+
+  app.post('/api/delBanner', function (req, res) {
+    var id = req.body.id;
+    db.get('banner').removeById(id).value();
+    var data = {
+      result: 0,
+      message: 'error message'
+    };
+    res.json(data)
+  });
+
+  app.post('/api/passBanner', function (req, res) {
+    var id = req.body.id;
+    db.get('banner')
+      .find({id: id})
+      .assign({status: 1})
+      .value();
+    var data = {
+      result: 0,
+      message: 'error message'
+    };
+    res.json(data)
+  });
+
+  app.post('/api/banBanner', function (req, res) {
+    var id = req.body.id;
+    db.get('banner')
+      .find({id: id})
+      .assign({status: 2})
+      .value();
+    var data = {
+      result: 0,
+      message: 'error message'
+    };
+    res.json(data)
+  });
 };

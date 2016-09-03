@@ -2,12 +2,13 @@
  * Created by easonxie on 2016/8/29.
  */
 export default{
+  url: '#!/bannerList/',
   render: {
     url: function (value) {
       return '<p>链接:' + value + '</p>'
     },
-    img: function (value) {
-      return '<img src="' + value + '">';
+    bgImg: function (value) {
+      return '<img src="' + value + '" width="500px;" style="margin-bottom:10px;">';
     },
     imgList: function (value) {
       var tpl = '<p>头像</p>';

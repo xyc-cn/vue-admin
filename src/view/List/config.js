@@ -74,10 +74,17 @@ export default{
       callback: handle.change
     },
     {
-      componentType: 'checkBox',
-      value: true,
-      label: '加精',
-      name: 'isStar',
+      componentType: 'input',
+      placeholder: '起始时间',
+      type: 'text',
+      name: 'startTime',
+      callback: handle.change
+    },
+    {
+      componentType: 'input',
+      placeholder: '结束时间',
+      type: 'text',
+      name: 'endTime',
       callback: handle.change
     },
     {

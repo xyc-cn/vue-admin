@@ -163,6 +163,12 @@ module.exports = {
       bgImg: 'http://imgcache.gtimg.cn/club/mobile/profile/comic_center/public/general_ed997f16f62d1aab3c9758c78b694adb.png',
       url: 'http://www.dfdfdfqq.com',
       status: 0
+    },
+    {
+      title: '测试输出',
+      bgImg: 'http://imgcache.gtimg.cn/club/mobile/profile/comic_center/public/general_ed997f16f62d1aab3c9758c78b694adb.png',
+      url: 'http://www.dfdfdddfqq.com',
+      status: 0
     }
   ]
 };

@@ -3,10 +3,17 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <template v-for="item in bannerList">
-          <h2>标题: {{item.title}}</h2>
-          <img v-bind:src="item.bgImg" class="img-thumbnail" width="100px">
-          <h2>链接: {{item.title}}</h2>
+          <div class="panel-body" style="border-bottom:#eee solid 3px">
+              <template v-for="value in item" v-if="config.render&&config.render[$key]">
+                {{{config.render[$key](value)}}}
+              </template>
+              <br>
+              <v_button text="上线" type="primary" :callback="handle.pass" :data="item"></v_button>
+              <v_button text="下线" type="warning" :callback="handle.ban" :data="item"></v_button>
+              <v_button text="删除" type="danger" :callback="handle.del" :data="{item:item,bannerList:bannerList}"></v_button>
+          </div>
         </template>
+        <v_pagintion :url="url" :total="total" :current="current"></v_pagintion>
       </div>
     </div>
   </div>
@@ -14,27 +21,30 @@
 <script>
   import config from './config'
   import handle from './handle'
+  import button from './../../components/button'
+  import Pagintion from '../../components/Pagintion'
 
   export default{
     data () {
       return {
         config: config,
-        bannerList: []
+        bannerList: [],
+        handle: handle,
+        url: config.url,
+        total: 1,
+        current: 1
       }
     },
     route: {
       data: function (transition) {
-        handle.fetchBannerListData(1, this);
+        this.current = this.$route.params.page ? this.$route.params.page : 1;
+        handle.fetchBannerListData(this.current, this);
         transition.next({})
       }
     },
-    watch: {
-      bannerList: function () {
-        console.log(333);
-      }
-    },
-    ready: function () {
-      console.log(this.bannerList);
+    components: {
+      v_button: button,
+      v_pagintion: Pagintion
     }
   }
 </script>

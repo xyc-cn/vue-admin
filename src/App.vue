@@ -11,7 +11,7 @@
       return {
         left: [{name: '审批管理', url: '/#!/list'}, {
           name: '轮播管理',
-          list: [{name: '查看轮播', url: '55'}, {name: '新增轮播', url: '55'}]
+          list: [{name: '查看轮播', url: '/#!/bannerList'}, {name: '新增轮播', url: '/#!/addBanner'}]
         }],
         right: [{name: '登录', url: '/#!/login'}]
       }

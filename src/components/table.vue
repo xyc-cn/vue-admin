@@ -19,7 +19,7 @@
           </template>
           <td v-if="operation">
           <template v-for="item in operation">
-            <v_button :text="item.text" :type="item.type" :callback="item.callback" :data="data"></v_button>
+            <v_button :text="item.text" :type="item.type" :callback="item.callback" :data="{data:data,list:list}"></v_button>
           </template>
           </td>
         </tr>

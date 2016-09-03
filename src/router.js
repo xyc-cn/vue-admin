@@ -9,13 +9,16 @@ export default (router) => {
     '/list/:page': {
       component: (resolve) => require(['./view/List/List.vue'], resolve)
     },
-    '/editorBanner': {
+    '/addBanner': {
       component: (resolve) => require(['./view/EditorBanner/EditorBanner.vue'], resolve)
     },
     '/detail/:id': {
       component: (resolve) => require(['./view/Detail/Detail.vue'], resolve)
     },
     '/bannerList': {
+      component: (resolve) => require(['./view/BannerList/BannerList.vue'], resolve)
+    },
+    '/bannerList/:page': {
       component: (resolve) => require(['./view/BannerList/BannerList.vue'], resolve)
     },
     '/test': {

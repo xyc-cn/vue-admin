@@ -2,7 +2,7 @@
   <div class="panel_main">
     <div class="panel panel-default">
       <div class="panel-body">
-        <v_form_inline v-for="item in form":components="item"></v_form_inline>
+        <v_form_inline v-for="item in form":components="item" :params="params"></v_form_inline>
         <v_table :th="table.th" :list="list" :operation="table.operation"  :key="table.key" :render="table.render"></v_table>
         <v_pagintion :url="url" :total="total" :current="current"></v_pagintion>
       </div>
@@ -15,15 +15,17 @@
   import table from '../../components/table'
   import Pagintion from '../../components/Pagintion'
   import config from './config'
-  import { fetchListData, setCurrentPage } from '../../vuex/List/actions'
-  import { getListData, getParams, getCurrentPage, getTotal } from '../../vuex/List/getters'
+  import handle from './handle'
   export default {
     data () {
       return {
         list: [],
         url: config.url,
         table: config.table,
-        form: config.form
+        form: config.form,
+        params: {},
+        total: 1,
+        current: 1
       }
     },
     components: {
@@ -31,36 +33,20 @@
       v_table: table,
       v_pagintion: Pagintion
     },
-    watch: {
-      listData: function () {
-        this.list = this.listData
-      },
-      params: function () { // 搜索或者过滤按钮按了后，params参数会被设置
-        this.fetchListData(1);
-      }
-    },
     route: {
       data: function (transition) {
         var page = this.$route.params.page ? this.$route.params.page : 1;
-        this.setCurrentPage(page);
-        this.fetchListData(page);
+        this.params.page = page;
+        handle.fetchData(this.params, this);
         transition.next({})
       }
     },
-    vuex: {
-      getters: {
-        params: getParams,
-        total: getTotal,
-        listData: getListData,
-        current: getCurrentPage
-      },
-      actions: {
-        fetchListData: fetchListData,
-        setCurrentPage: setCurrentPage
+    events: {
+      'refresh': function (list, total) {
+        this.list = list;
+        this.total = total;
+        this.current = 1;
       }
-    },
-    ready: function () {
-      this.list = this.listData;
     }
   }
 </script>

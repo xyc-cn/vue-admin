@@ -40,8 +40,7 @@ export default{
       placeholder: '请填写搜索内容',
       desc: '搜索',
       type: 'text',
-      name: 'search',
-      callback: handle.change
+      name: 'search'
     },
     {
       componentType: 'button',
@@ -61,31 +60,24 @@ export default{
       placeholder: '我爱你',
       desc: '昵称',
       type: 'text',
-      name: 'name',
-      callback: handle.change
+      name: 'name'
     },
     {
       componentType: 'select',
       value: -1,
       label: '状态',
       name: 'status',
-      value_type: 'Number',
-      options: [{text: '全部', value: -1}, {text: '未审核', value: 0}, {text: '已通过', value: 1}, {text: '已屏蔽', value: 2}],
-      callback: handle.change
+      options: [{text: '全部', value: -1}, {text: '未审核', value: 0}, {text: '已通过', value: 1}, {text: '已屏蔽', value: 2}]
     },
     {
-      componentType: 'input',
+      componentType: 'datePicker',
       placeholder: '起始时间',
-      type: 'text',
-      name: 'startTime',
-      callback: handle.change
+      name: 'startTime'
     },
     {
-      componentType: 'input',
+      componentType: 'datePicker',
       placeholder: '结束时间',
-      type: 'text',
-      name: 'endTime',
-      callback: handle.change
+      name: 'endTime'
     },
     {
       componentType: 'button',

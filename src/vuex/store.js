@@ -4,7 +4,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import $ from 'jquery'
-import ListConfig from './List/config'
 Vue.use(Vuex);
 
 const state = $.extend({}, ListConfig.state);

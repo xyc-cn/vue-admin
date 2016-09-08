@@ -33,8 +33,10 @@ export default {
       type: String,
       default: 'Pick date'
     },
+    callback: Function,
     readonly: Boolean,
-    value: String
+    value: String,
+    name: String
   },
 
   ready () {
@@ -58,6 +60,7 @@ export default {
       if (!this.datepicker) {
         this.datepicker = new Datepicker(this.$el.nextSibling, this.config, this.l10n)
         this.datepicker.set('onChange', (d, s) => {
+          this.callback && this.callback.apply(null, [this.name, s, this]);
           this.$set('value', s)
         })
       }

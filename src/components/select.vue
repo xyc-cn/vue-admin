@@ -18,13 +18,21 @@
     },
     methods: {
       update: function (e) {
-        var value = e.target.value;
-        if (this.value_type === 'Number') {
-          value = Number(value);
-        }
         this.callback && this.callback.apply(null, [this.name, this.value, this]);
       }
     },
-    components: {}
+    components: {},
+    beforeCompile: function () {
+      var legal;
+      var self = this;
+      this.options && this.options.forEach && this.options.forEach(function (v) {
+        if (self.value === v.value) {
+          legal = true;
+        }
+      });
+      if (!legal) {
+        this.value = this.options[0].value;
+      }
+    }
   }
 </script>

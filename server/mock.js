@@ -80,6 +80,9 @@ module.exports = function (app) {
       if (req.body.status < 0) {
         delete req.body.status;
       }
+      if (req.body.status){
+        req.body.status = Number(req.body.status)
+      }
       console.log(req.body);
       list = db.get('posts').filter(req.body).drop((page - 1) * 10).take(10).value();
       total = Math.ceil(db.get('posts').filter(req.body).size().value() / 10);

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import messageUtil from './../../util/messageUtil'
-
+import pathUtil from './../../util/path'
 export default (function () {
   const fetchData = function (data, vm) {
     $.post('./api/list', data, function (res) {
@@ -9,7 +9,6 @@ export default (function () {
       }
     });
   };
-
   return {
     del: function (data, vm) {
       $.post('./api/del', data.data, function (res) {
@@ -48,14 +47,18 @@ export default (function () {
       vm.$router.go('/detail/' + data.data.id);
     },
     search: function (data, vm) {
+      vm.$dispatch('reset', {search: data.search});
       fetchData({search: data.search}, vm)
     },
     filter: function (data, vm) {
       delete data.search;
-      fetchData(data, vm)
+      vm.$dispatch('reset', data);
+      vm.$router.go('/list?' + (+ new Date()));
     },
     refresh: function (data, vm) {
-      fetchData({}, vm)
+      vm.params = {};
+      vm.$dispatch('reset');
+      vm.$router.go('/list?'+ (+ new Date()));
     },
     fetchData: function (data, vm) {
       fetchData(data, vm)

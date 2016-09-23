@@ -3,12 +3,11 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
-import $ from 'jquery'
 Vue.use(Vuex);
 
-const state = $.extend({}, ListConfig.state);
+const state = {};
 
-const mutations = $.extend({}, ListConfig.motations);
+const mutations = {};
 
 export default new Vuex.Store({
   state,

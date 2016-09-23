@@ -19,13 +19,15 @@
     methods: {
       setPaginator: function () {
         var currentPage = this.$route.params.page ? this.$route.params.page : this.current ? this.current : 1;
-        if (currentPage > this.total) {
-          return
+        var total = this.total > 1 ? this.total : 1;
+        if (currentPage > total) {
+          currentPage = 1
         }
+
         var url = this.url;
         var options = {
           currentPage: currentPage,
-          totalPages: this.total ? this.total : 1,
+          totalPages: total,
           pageUrl: function (type, clickedPage, current) {
             /* eslint-disable */
             switch (type) {

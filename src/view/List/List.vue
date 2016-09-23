@@ -24,6 +24,7 @@
         table: config.table,
         form: config.form,
         params: {},
+        submitParams: {},
         total: 1,
         current: 1
       }
@@ -36,8 +37,9 @@
     route: {
       data: function (transition) {
         var page = this.$route.params.page ? this.$route.params.page : 1;
-        this.params.page = page;
-        handle.fetchData(this.params, this);
+        this.submitParams.page = page;
+        this.current = page;
+        handle.fetchData(this.submitParams, this);
         transition.next({})
       }
     },
@@ -46,6 +48,9 @@
         this.list = list;
         this.total = total;
         this.current = 1;
+      },
+      'reset': function (data) {
+        this.submitParams = data || {};
       }
     }
   }

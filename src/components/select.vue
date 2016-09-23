@@ -10,7 +10,7 @@
 </template>
 <script>
   export default{
-    props: ['options', 'value', 'label', 'name', 'value_type', 'callback'],
+    props: ['options', 'value', 'label', 'name', 'callback'],
     data () {
       return {
         msg: 'hello vue'
@@ -18,7 +18,7 @@
     },
     methods: {
       update: function (e) {
-        this.callback && this.callback.apply(null, [this.name, this.value, this]);
+        this.callback && this.callback.apply(null, [this.name, Number(this.value), this]);
       }
     },
     components: {},
@@ -33,6 +33,7 @@
       if (!legal) {
         this.value = this.options[0].value;
       }
+      console.log();
     }
   }
 </script>

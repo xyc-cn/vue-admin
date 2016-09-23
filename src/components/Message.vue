@@ -38,8 +38,8 @@
 </script>
 <style>
   .bt-alert{
-    position: absolute;
-    top: 200px;
+    position: fixed;
+    top: 60px;
     width: 300px;
     left:50%;
     margin-left: -150px;
